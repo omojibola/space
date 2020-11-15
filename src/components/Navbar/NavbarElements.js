@@ -98,6 +98,10 @@ export const NavBtn = styled.nav`
     display: none;
   }
 `;
+
+export const Text = styled.h4`
+  color: black;
+`;
 export const NavBtnLink = styled(Link)`
   border-radius: 5px;
   background: #6a63fb;

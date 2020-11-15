@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-export const Container = styled.div`
+export const Container = styled(Formik)`
   min-height: 692px;
   position: fixed;
   bottom: 0;
@@ -48,7 +49,18 @@ export const FormContent = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const ErrorWrapper = styled.div`
+  color: red;
+  font-size: 10px;
+  margin-top: -7px;
+  margin-bottom: 13px;
+`;
+
+export const Error = styled(ErrorMessage)`
+  color: red;
+`;
+
+export const StyledForm = styled(Form)`
   background: #fff;
   max-width: 400px;
   height: auto;
@@ -79,12 +91,12 @@ export const FormLabel = styled.label`
   color: #6a63fb;
 `;
 
-export const FormInput = styled.input`
+export const FormInput = styled(Field)`
   padding: 10px 10px;
-  margin-bottom: 20px;
   border: none;
   border-radius: 4px;
   background: #eee;
+  margin-bottom: 10px;
 
   &:focus {
     outline: none;
@@ -99,12 +111,17 @@ export const FormButton = styled.button`
   color: #fff;
   font-size: 13px;
   cursor: pointer;
+  margin-bottom: 12px;
 
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #fff;
     border: 2px solid #6a63fb;
     color: #6a63fb;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 `;
 
