@@ -9,12 +9,12 @@ import {
   NavMenu,
   NavItem,
   NavLinks,
+  NavLinkProfile,
   NavBtn,
   NavBtnLink,
 } from './NavbarElements';
 
 const Navbar = ({ toggle, loggedIn, name }) => {
-  console.log(loggedIn);
   return (
     <Nav>
       <NavbarContainer>
@@ -30,9 +30,14 @@ const Navbar = ({ toggle, loggedIn, name }) => {
             <NavLinks to="how-it-works">How It Works</NavLinks>
           </NavItem>
           {loggedIn ? (
-            <NavItem>
-              <NavLinks to="log-In">{name}</NavLinks>
-            </NavItem>
+            <>
+              <NavItem>
+                <NavLinkProfile to="/profile">{name}</NavLinkProfile>
+              </NavItem>
+              <NavItem>
+                <NavLinks to="log-out">Log out</NavLinks>
+              </NavItem>
+            </>
           ) : (
             <>
               <NavItem>

@@ -5,15 +5,36 @@ import store from './store';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Loader from './components/Loader/Loader';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const root = document.getElementById('root');
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Wrapper>
+    <Loader></Loader>
+  </Wrapper>,
+  root
 );
+
+store.firebaseAuthIsReady.then(() => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

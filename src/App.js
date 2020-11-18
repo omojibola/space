@@ -13,6 +13,7 @@ import Sidebar from '../src/components/Navbar/sidebar/Sidebar';
 import SignUpPage from './pages/SignUpPage';
 import { connect } from 'react-redux';
 import ProfilePage from './pages/ProfilePage';
+import Logout from './components/Logout/Logout';
 
 function App({ loggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,8 +30,9 @@ function App({ loggedIn }) {
         <Navbar toggle={toggle} />
         <Switch>
           <Route path="/" component={HomePage} exact />
+          <Route path="/log-out" component={Logout} exact />
           <Route path="/profile" component={ProfilePage} exact />
-          <Redirect to="/" />
+          <Redirect to="/profile" />
         </Switch>
       </Router>
     );

@@ -1,6 +1,9 @@
 import React from 'react';
 
 import * as Yup from 'yup';
+import * as actions from '../../store/actions';
+import { connect } from 'react-redux';
+
 import {
   Container,
   StyledForm,
@@ -24,7 +27,7 @@ const LoginSchema = Yup.object().shape({
     .required('Email is required'),
   password: Yup.string().required('Password is required'),
 });
-const SignIn = () => {
+const SignIn = ({ signIn, error, loading }) => {
   return (
     <>
       <Container
@@ -33,8 +36,9 @@ const SignIn = () => {
           password: '',
         }}
         validationSchema={LoginSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          console.log(values);
+        onSubmit={async (values, { setSubmitting }) => {
+          await signIn(values);
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting, isValid }) => (
@@ -64,13 +68,20 @@ const SignIn = () => {
                   <Error name="password" />
                 </ErrorWrapper>
 
-                <FormButton type="submit" disabled={!isValid}>
-                  Sign In
-                </FormButton>
+                {loading ? (
+                  <FormButton type="submit" disabled={!isValid}>
+                    Signing In
+                  </FormButton>
+                ) : (
+                  <FormButton type="submit" disabled={!isValid}>
+                    Sign In
+                  </FormButton>
+                )}
                 <TextWrapper>
                   <Text>Don't have an Account? </Text>
                   <Texttwo to="/sign-up"> Register</Texttwo>
                 </TextWrapper>
+                <ErrorWrapper>{error}</ErrorWrapper>
               </StyledForm>
             </FormContent>
           </FormWrap>
@@ -80,4 +91,13 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+const mapStateToProps = ({ auth }) => ({
+  loading: auth.loading,
+  error: auth.error,
+});
+
+const mapDispatchToProps = {
+  signIn: actions.signIn,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import * as actions from '../../store/actions';
@@ -35,7 +36,7 @@ const SignUpSchema = Yup.object().shape({
 });
 
 const SignUp = ({ signUp, loading, error }) => {
-  console.log(error);
+  const history = useHistory();
   return (
     <>
       <Container
@@ -49,6 +50,9 @@ const SignUp = ({ signUp, loading, error }) => {
         onSubmit={async (values, { setSubmitting }) => {
           await signUp(values);
           setSubmitting(false);
+          if (!error) {
+            history.push('/profile');
+          }
         }}
       >
         {({ isSubmitting, isValid }) => (

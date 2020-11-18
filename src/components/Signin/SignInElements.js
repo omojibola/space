@@ -134,6 +134,8 @@ export const Text = styled.div`
   margin-top: 24px;
   color: #6a63fb;
   font-size: 14px;
+  margin-bottom: 20px;
+
 `;
 
 export const Texttwo = styled(Link)`

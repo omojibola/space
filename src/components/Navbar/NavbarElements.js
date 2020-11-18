@@ -90,6 +90,17 @@ export const NavLinks = styled(Link)`
   }
 `;
 
+export const NavLinkProfile = styled(Link)`
+  color: #000;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  font-weight: 500;
+`;
+
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
