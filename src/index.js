@@ -7,6 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Loader from './components/Loader/Loader';
 import styled from 'styled-components';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const Wrapper = styled.div`
   width: 100%;

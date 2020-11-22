@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Nav = styled.nav`
+export const NavS = styled.nav`
   background-color: #fdfdfe;
   height: 80px;
   display: flex;
@@ -133,4 +133,11 @@ export const NavBtnLink = styled(Link)`
     border: 2px solid #6a63fb;
     color: #6a63fb;
   }
+`;
+
+export const NavbarImage = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
 `;

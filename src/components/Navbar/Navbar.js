@@ -1,22 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FaBars } from 'react-icons/fa';
+import { Button } from '../../ButtonElement';
+import * as actions from '../../store/actions';
 import {
-  Nav,
+  NavS,
   NavbarContainer,
   NavLogo,
   MobileIcon,
   NavMenu,
   NavItem,
   NavLinks,
-  NavLinkProfile,
   NavBtn,
   NavBtnLink,
+  NavbarImage,
 } from './NavbarElements';
+import {
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  UncontrolledDropdown,
+} from 'reactstrap';
 
-const Navbar = ({ toggle, loggedIn, name }) => {
+const Navbar = ({ toggle, loggedIn, name, image }) => {
   return (
-    <Nav>
+    <NavS>
       <NavbarContainer>
         <NavLogo to="/">Space.</NavLogo>
         <MobileIcon onClick={toggle}>
@@ -31,12 +39,24 @@ const Navbar = ({ toggle, loggedIn, name }) => {
           </NavItem>
           {loggedIn ? (
             <>
-              <NavItem>
-                <NavLinkProfile to="/profile">{name}</NavLinkProfile>
-              </NavItem>
-              <NavItem>
-                <NavLinks to="log-out">Log out</NavLinks>
-              </NavItem>
+              <NavbarImage src={image} alt="profile" />
+
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  {name}
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem href="/profile" style={{ color: '#778899' }}>
+                    Dashboard
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    <Button red to="/log-out">
+                      Log out
+                    </Button>
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </>
           ) : (
             <>
@@ -51,13 +71,18 @@ const Navbar = ({ toggle, loggedIn, name }) => {
           )}
         </NavMenu>
       </NavbarContainer>
-    </Nav>
+    </NavS>
   );
 };
 
 const mapStateToProps = ({ firebase }) => ({
   loggedIn: firebase.auth.uid ? true : null,
   name: firebase.profile.fullName,
+  image: firebase.profile.profileImage,
 });
 
-export default connect(mapStateToProps)(Navbar);
+const mapDispatchToProps = {
+  logout: actions.SignOut,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

@@ -14,6 +14,7 @@ import SignUpPage from './pages/SignUpPage';
 import { connect } from 'react-redux';
 import ProfilePage from './pages/ProfilePage';
 import Logout from './components/Logout/Logout';
+import EditProfile from './components/Profile/EditProfile';
 
 function App({ loggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +33,8 @@ function App({ loggedIn }) {
           <Route path="/" component={HomePage} exact />
           <Route path="/log-out" component={Logout} exact />
           <Route path="/profile" component={ProfilePage} exact />
-          <Redirect to="/profile" />
+          <Route to="/edit-profile" component={EditProfile} />
+          <Redirect to="/404" />
         </Switch>
       </Router>
     );

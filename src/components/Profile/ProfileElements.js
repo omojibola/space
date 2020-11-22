@@ -45,3 +45,18 @@ export const Header1 = styled.h1`
   line-height: 16px;
   margin-top: 30px;
 `;
+export const Header3 = styled.h3`
+  color: #000;
+  line-height: 16px;
+  margin-top: 30px;
+`;
+
+export const ProfileFormContainer = styled.div`
+  padding: 50px 100px;
+`;
+
+export const ErrorWrapper = styled.div`
+  color: red;
+  font-size: 15px;
+  margin-bottom: 13px;
+`;

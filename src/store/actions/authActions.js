@@ -17,6 +17,7 @@ export const SignUp = (data) => async (
       fullName: data.name,
       email: data.email,
       profileImage: 'https://icotar.com/avatar/:hash',
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
     dispatch({ type: actions.AUTH_SUCCESS });
   } catch (error) {
