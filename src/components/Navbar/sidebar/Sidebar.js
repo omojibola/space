@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   SidebarContainer,
   SideBtnWrap,
@@ -8,11 +8,11 @@ import {
   CloseIcon,
   Icon,
   SidebarRoute,
-} from './SidebarElements';
+} from "./SidebarElements";
 
 const Sidebar = ({ toggle, isOpen }) => {
   return (
-    <>
+    <React.Fragment>
       <SidebarContainer isOpen={isOpen} onClick={toggle}>
         <Icon onClick={toggle}>
           <CloseIcon />
@@ -32,7 +32,7 @@ const Sidebar = ({ toggle, isOpen }) => {
           </SideBtnWrap>
         </SidebarWrapper>
       </SidebarContainer>
-    </>
+    </React.Fragment>
   );
 };
 

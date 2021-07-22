@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button } from '../../../ButtonElement';
+import React from "react";
+import { Button } from "../../../ButtonElement";
 import {
   Column1,
   InfoContainer,
@@ -13,7 +13,7 @@ import {
   Img,
   TopLine,
   BtnWrap,
-} from './InfoElements';
+} from "./InfoElements";
 
 const InfoSection = ({
   imgStart,
@@ -25,7 +25,7 @@ const InfoSection = ({
   buttonLabel,
 }) => {
   return (
-    <>
+    <React.Fragment>
       <InfoContainer>
         <InfoWrapper>
           <InfoRow imgStart={imgStart}>
@@ -56,7 +56,7 @@ const InfoSection = ({
           </InfoRow>
         </InfoWrapper>
       </InfoContainer>
-    </>
+    </React.Fragment>
   );
 };
 

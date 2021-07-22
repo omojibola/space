@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Container,
   Form,
@@ -12,11 +12,11 @@ import {
   Text,
   Texttwo,
   TextWrapper,
-} from '../Signin/SignInElements';
+} from "../Signin/SignInElements";
 
 const SignUp = () => {
   return (
-    <>
+    <React.Fragment>
       <Container>
         <FormWrap>
           <Icon to="/">Space</Icon>
@@ -39,7 +39,7 @@ const SignUp = () => {
           </FormContent>
         </FormWrap>
       </Container>
-    </>
+    </React.Fragment>
   );
 };
 
